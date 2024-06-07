@@ -14,24 +14,27 @@ public class Main {
 
         for(int i = 0; i < n; i ++) {
 
-            isVisited = new boolean[26];
+            int [] s1Arr = new int[26];
+            int [] s2Arr = new int[26];
             StringTokenizer st  = new StringTokenizer(br.readLine());
             String s1 = st.nextToken();
             String s2 = st.nextToken();
 
             for(int j = 0; j < s1.length(); j++){
                 int temp = s1.charAt(j);
-                if(!isVisited[temp-97]){
-                    arr[temp-97]++;
-                    isVisited[temp-97] = true;
-                }
+                s1Arr[temp-97]++;
             }
 
             for(int j = 0; j< s2.length(); j++){
                 int temp = s2.charAt(j);
-                if(!isVisited[temp-97]){
-                    arr[temp-97]++;
-                    isVisited[temp-97] = true;
+                s2Arr[temp-97]++;
+            }
+
+            for(int j = 0; j < arr.length; j++){
+                if(s1Arr[j] > s2Arr[j]){
+                    arr[j] += s1Arr[j];
+                }else{
+                    arr[j] += s2Arr[j];
                 }
             }
         }
